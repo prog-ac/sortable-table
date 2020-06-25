@@ -5,16 +5,12 @@
       <template v-slot:default>
         <thead>
           <tr>
-            <th
-              v-for="(key, index) in Object.keys(users[0])"
-              :key="index"
-              @click="onClickTh(key)"
-            >{{ key }}</th>
+            <th v-for="(key, index) in keys" :key="index" @click="onClickTh(key)">{{ key }}</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="(user, index) in users" :key="index">
-            <td v-for="(key, index) in Object.keys(users[0])" :key="index">{{ user[key] }}</td>
+            <td v-for="(key, index) in keys" :key="index">{{ user[key] }}</td>
           </tr>
         </tbody>
       </template>
@@ -29,7 +25,8 @@ export default {
     return {
       originalUsers: originalUsers,
       users: originalUsers,
-      filter: ""
+      filter: "",
+      keys: ["name", "pref", "birthday", "score"]
     };
   },
   created() {},
